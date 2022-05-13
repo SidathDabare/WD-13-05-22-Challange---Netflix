@@ -14,17 +14,9 @@ function scrollNavbar() {
   if (document.documentElement.scrollTop > 2) {
     navbarBg.classList.add("scroll")
     // Change the color of navLinks on scroll
-    for (let i = 0; i < navLinks.length; i++) {
-      const element = navLinks[i]
-      element.classList.add(".linkColor")
-    }
   } else {
     navbarBg.classList.remove("scroll")
     // Change the color of navLinks back to default
-    for (let i = 0; i < navLinks.length; i++) {
-      const element = navLinks[i]
-      element.classList.remove(".linkColor")
-    }
   }
 }
 //------------------------------------------------------------
@@ -39,8 +31,8 @@ let activeIndex = 0 // the current page on the slider
 // Fill the slider with all the movies in the "movies" array
 
 // delete the initial movie in the html
-// const initialMovie = document.getElementById("movie0");
-// initialMovie.remove();
+// const initialMovie = document.getElementById("movie0")
+// initialMovie.remove()
 
 // Update the indicators that show which page we're currently on
 function updateIndicators(index) {
@@ -101,10 +93,10 @@ btnRight.addEventListener("click", (e) => {
   }
 })
 
-slider.addEventListener("scroll", (e) => {
-  console.log(slider.scrollLeft)
-  console.log(slider.offsetWidth)
-})
+// slider.addEventListener("scroll", (e) => {
+//   console.log(slider.scrollLeft)
+//   console.log(slider.offsetWidth)
+// })
 
 //play video on hover---------------------
 const VideoController = function (isHovering, videoElement) {
@@ -117,7 +109,7 @@ const VideoController = function (isHovering, videoElement) {
 
 //------------------------------------------------------------------------------------------------------
 
-const category = "drama".toLowerCase()
+const category = "action".toLowerCase()
 console.log(category)
 window.onload = () => {
   loadProducts()
