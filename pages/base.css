@@ -1,0 +1,16 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+.d-none {
+  display: none;
+}

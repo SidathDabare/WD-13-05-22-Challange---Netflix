@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="./backoffice.css" />
+    <title>Backoffice</title>
+  </head>
+  <body>
+    <div class="nav col-10 m-auto">
+      <a class="navbar-logo pt-3" href="../index.html"
+        ><img id="logo" src="../assets/Logonetflix.png" alt="logo"
+      /></a>
+    </div>
+    <div
+      class="row title col-sm-11 col-md-8 col-lg-6 pt-3 text-light m-auto py-0"
+    >
+      <h3 class="title">Backoffice</h3>
+    </div>
+    <div
+      class="row col-sm-11 col-md-10 col-lg-8 m-auto border-top pt-3 py-0 info-content"
+    >
+      <div class="container row col-10 m-auto mt-5 text-light" id="row">
+        <form class="p-3 col-12" onsubmit="postPrducts(event)">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label font-weight-bold"
+              >Movie Tittle</label
+            >
+            <input
+              type="text"
+              class="form-control bg-transparent rounded-0"
+              id="movieTitle"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label font-weight-bold"
+              >Description</label
+            >
+            <input
+              type="text"
+              class="form-control bg-transparent rounded-0"
+              id="description"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label font-weight-bold"
+              >Category</label
+            >
+            <input
+              type="text"
+              class="form-control bg-transparent rounded-0"
+              id="category"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label font-weight-bold"
+              >Image</label
+            >
+            <input
+              type="text"
+              class="form-control bg-transparent rounded-0"
+              id="image"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <button
+              type="reset"
+              class="btn edit btn-outline-light rounded-0 px-1 mb-1"
+            >
+              Reset Fields
+            </button>
+            <button
+              type="submit"
+              class="btn edit btn-outline-light rounded-0 px-1 mb-1"
+            >
+              Add Movie
+            </button>
+            <button
+              onclick="updateMovie()"
+              type="button"
+              class="btn edit btn-outline-light rounded-0 px-1 mb-1"
+            >
+              Update Movie
+            </button>
+            <button
+              type="button"
+              class="btn edit btn-outline-danger rounded-0 px-1 mb-1 deleteBtn"
+              onclick="deleteProduct()"
+            >
+              Delete Movie
+            </button>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label font-weight-bold"
+              >Price</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              aria-describedby="emailHelp"
+            />
+          </div> -->
+        </form>
+      </div>
+      <!-- <div
+        class="row col-12 m-auto p-0 border-top pt-4 justify-content-between"
+      >
+        <button
+          type="button"
+          class="btn edit btn-outline-light rounded-0 col-3"
+        >
+          EDIT
+        </button>
+        <button
+          type="button"
+          class="btn cancel btn-outline-light rounded-0 col-3"
+        >
+          CANCEL
+        </button>
+        <button
+          type="button"
+          class="btn delete btn-outline-light rounded-0 col-6"
+        >
+          DELETE PROFILE
+        </button>
+      </div> -->
+    </div>
+    <script src="./backoffice.js"></script>
+  </body>
+</html>

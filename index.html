@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    
+    <link rel="stylesheet" href="./pages/style.css" />
+    <link rel="stylesheet" href="./pages/base.css" />
+     <script src="https://kit.fontawesome.com/a0043d9bc2.js" crossorigin="anonymous"></script>
+
+    <title>Netflix</title>
+  </head>
+  <body>
+    <div class="bg-video-container-overlay">
+      <div class="bg-video-container">
+        <video autoplay muted loop id="myVideo">
+          <source src="./assets/video-bg.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+      
+      <nav id="navbarBg" class="navbar navbar-expand-lg navbarBg">
+      <a class="navbar-brand" href="#"
+        ><img id="logo" src="../assets/Logonetflix.png" alt="logo"
+      /></a>
+      <!-- <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      > -->
+       <a
+              class="nav-link dropdown-toggle navbar-toggler"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"              
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              Browse
+            </a>
+            <div class="dropdown-menu ml-5 w-50" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Home</a>
+              <a class="dropdown-item" href="./pages/profile.html">Profile</a>
+              <a class="dropdown-item" href="#">Settings</a>
+              <a class="nav-link" href="./pages/backoffice.html">Backoffice</a>
+              
+               <form class="form-inline my-2 my-lg-0 col-12">
+                 <input
+                  id="searchBar"
+                  class="form-control mr-sm-2 justify-content-end rounded-0 searchBar01" 
+                  type="search"
+                  placeholder="Title,People,Genres"
+                  aria-label="Search"
+                />
+                
+                </form>
+              
+
+            </div>
+<!-- 
+      </button> -->
+
+      <div
+        class="collapse navbar-collapse col-6 m-auto "
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav mr-auto">
+     
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages/profile.html">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages/setting.html">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages/backoffice.html">Backoffice</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link disabled" href="#">New & Popular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">My List</a>
+          </li>
+         
+        </ul>
+      </div>
+      <div
+        class="collapse navbar-collapse col-4 ml-auto justify-content-end"
+        id="navbarSupportedContent"
+      >
+     
+        <ul class="navbar-nav mr-auto d-flex align-items-center">
+          <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0 col-12">
+          <input
+            id="searchBar"
+            class="form-control mr-sm-2 input-display-none justify-content-end rounded-0 searchBar" 
+            type="search"
+            placeholder="Title,People,Genres"
+            aria-label="Search"
+          />
+       
+        </form>
+          </li>
+          <li class="nav-item">
+            <button onclick="showSearch()" class="btn my-2 my-sm-0" type="submit">
+          <i id="searcIcon" class="bi bi-search text-light"></i>
+          </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Kids</a>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="#"><i class="bi bi-bell-fill"></i></a>
+            <div class="circle-red">3</div>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="#"><img class="avtar-iamge ml-4" src="../assets/avatar-1.jpg" alt="" /></a>            
+          </li>
+          <li class="nav-item">
+            <li class="nav-item dropdown ">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >           
+            </a>
+            <div class="dropdown-menu profile-menu " aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#"><img class="avtar-iamge ml-4" src="../assets/avatar-1.jpg" alt="" />Jhon Doe</a>
+              <a class="dropdown-item" href="#"><img class="avtar-iamge ml-4" src="../assets/avatar-4.jpg" alt="" />Tom Doe</a>
+              <a class="dropdown-item" href="#"><img class="avtar-iamge ml-4" src="../assets/avatar-5.jpg" alt="" />Jane Doe</a>
+              <a class="dropdown-item font-weight-bold" href="#"><i class="bi bi-pencil-square px-3 "></i>Manage Profile</a>
+              
+             <div class="dropdown-divider "></div>
+              <a class="dropdown-item font-weight-bold" href="#"><i class="bi bi-person-circle px-3 "></i>Account</a>
+              <a class="dropdown-item font-weight-bold" href="#"><i class="bi bi-info-circle px-3 "></i>Help Center</a>
+               <a class="dropdown-item text-center font-weight-bolder " href="#">Sign out of Netflix </a>
+            </div>
+           
+          </li> 
+     
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="jumbotron container1 col-12 col-md-10 m-auto bg-transparent text-white">
+        <h1 class="display-3 font-weight-bolder">Movie Tittle</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <!-- <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+    </div>
+
+      <div class="container2">
+    <button type="button" id="moveLeft" class="btn-nav">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <div class="container-indicators">
+      <div class="indicator active" data-index=0></div>
+      <div class="indicator" data-index=1></div>
+      <div class="indicator" data-index=2></div>
+    </div><h3 class="ml-5 text-light">Action Movies</h3>
+    <div class="slider" id="mySlider">
+      
+      <div class="movie" id="movie0" width='220' height='130'>
+     
+    </div>
+    <button type="button" id="moveRight" class="btn-nav">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+    <!-- <div class="footer col-12 row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 p-0  m-auto d-flex flex-column"> -->
+    <div class="footer row col-11 col-sm-10 col-md-9 col-lg-8 col-xl-8 m-auto">
+        <div class="social-media col-12 d-flex">
+          <div class="col-5"> 
+            <i class="bi bi-facebook text-light pr-2 pointer-event"></i>
+            <i class="bi bi-instagram text-light pr-2"></i>
+            <i class="bi bi-twitter text-light pr-2"></i>
+            <i class="bi bi-youtube text-light pr-2"></i>
+          </div>
+          <div class="col-7"></div>
+         
+        </div> 
+        <div class="foter-link ml-3 py-3 text-light row  col-xl-12">
+          <div class="col-6 col-sm-6 col-md-3  col-lg-3 col-xl-3">
+            <div class="row py-1">Audi and Subtitle</div>
+            <div class="row py-1">Media Center</div>
+            <div class="row py-1">Privacy</div>
+            <div class="row py-1">Conatct Us</div>
+         
+          </div>
+          <div class="col-6 col-sm-6 col-md-3  col-lg-3 col-xl-3">
+            <div class="row py-1">Audi and Subtitle</div>
+            <div class="row py-1">Media Center</div>
+            <div class="row py-1">Privacy</div>
+            <div class="row py-1">Conatct Us</div>
+         
+          </div>
+          <div class="col-6 col-sm-6 col-md-3  col-lg-3 col-xl-3">
+            <div class="row py-1">Audi and Subtitle</div>
+            <div class="row py-1">Media Center</div>
+            <div class="row py-1">Privacy</div>
+            <div class="row py-1">Conatct Us</div>
+         
+          </div>
+          <div class="col-6 col-sm-6 col-md-3  col-lg-3 col-xl-3">
+            <div class="row py-1">Audi and Subtitle</div>
+            <div class="row py-1">Media Center</div>
+            <div class="row py-1">Privacy</div>
+            <div class="row py-1">Conatct Us</div>
+         
+          </div>
+
+        </div> 
+
+
+        <div class="row col-11 col-sm-10 col-md-9 col-lg-12 col-xl-12 ml-3 pt-2 pb-4">       
+          <button type="button" class="btn btn-outline-light">Service Code</button>       
+         </div>
+        <div class="row col-11 col-sm-10 col-md-9 col-lg-12 col-xl-12 ml-3">     
+          <p class="text-light">&#169; 1997-2022 Netflix,Inc. </p>
+        </div>
+  
+      </div>
+        
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="index.js"></script> -->
+   <script src="./pages/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,180 @@
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgb(223, 0, 0);
+}
+/* body {
+  background-color: #888787;
+} */
+#logo {
+  height: 30px;
+  margin-left: 100px;
+}
+.navbarBg {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.6702031154258579) 9%,
+    rgba(0, 0, 0, 0.22202384371717432) 100%
+  );
+}
+.navbarBg:hover {
+  background-color: #2d2d2d;
+}
+.scroll {
+  background-color: #141414;
+  transition: 0.8s ease;
+}
+.linkColor {
+  background-color: aqua;
+}
+a.nav-link {
+  color: white;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+a.nav-link:hover {
+  color: rgb(209, 209, 209);
+}
+.circle-red {
+  display: flex;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 28px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+.avtar-iamge {
+  height: 40px;
+  border-radius: 5px;
+}
+.profile-menu {
+  position: relative;
+  margin-top: 10px;
+  margin-left: -200px;
+  background-color: #141414;
+  width: 250px;
+}
+.profile-menu a {
+  color: rgb(193, 193, 193);
+  padding: 15px 5px;
+  width: 100%;
+}
+.profile-menu a:hover {
+  background-color: rgb(52, 53, 53);
+  color: white;
+}
+.profile-menu img {
+  margin-right: 10px;
+}
+.input-display-none {
+  opacity: 0;
+}
+.input-display {
+  position: relative;
+  animation: fadeIn 1s ease forwards;
+}
+/* #searcIcon {
+  position: relative;
+  color: white;
+  animation: fadeIn 1s ease forwards;
+} */
+@keyframes fadeIn {
+  from {
+    right: -100%;
+    opacity: 0;
+    width: 0%;
+  }
+  to {
+    right: 0%;
+    opacity: 1;
+    width: 100%;
+  }
+}
+#searchBar {
+  background-color: #141414;
+}
+
+/* ------------------------------*/
+
+/* ------header container */
+.container {
+  position: relative;
+  top: 15vh;
+}
+.btn-light {
+  background-color: #b8b8b8;
+}
+#paypal {
+  height: 15px;
+}
+#ultra-hd {
+  height: 18px;
+}
+#payment-imag {
+  height: 25px;
+  border-radius: 2px;
+}
+p {
+  line-height: 13px;
+  font-size: 14px;
+}
+@media screen and (max-width: 1000px) {
+  #logo {
+    margin-left: 30px;
+  }
+  .navbar {
+    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+  a.dropdown-toggle {
+    position: absolute;
+    left: 150px;
+    top: 12px;
+  }
+  .dropdown-menu {
+    background-color: #141414;
+    width: 40%;
+  }
+  .dropdown-menu a {
+    color: rgb(193, 193, 193);
+    padding: 15px 20px;
+    text-align: center;
+  }
+  a.dropdown-item:hover {
+    background-color: rgb(52, 53, 53);
+    border-bottom: 1px solid gray;
+    color: white;
+  }
+  .container {
+    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  .col-3 {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(192, 191, 191);
+    width: 100%;
+    padding: 10px;
+    margin-left: 10px;
+  }
+  .col-3,
+  .col-9 {
+    min-width: 100%;
+    justify-content: space-between;
+  }
+}
