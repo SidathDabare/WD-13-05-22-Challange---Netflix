@@ -97,3 +97,10 @@ const createMovieDiv = async () => {
 }
 
 //------------------------------------------------------------
+const btnLeftScroll = (e) => {
+  console.log("left")
+  console.log(e.target.parentElement)
+}
+const btnRightScroll = () => {
+  console.log("right")
+}
