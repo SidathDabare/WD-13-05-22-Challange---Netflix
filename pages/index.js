@@ -1,3 +1,8 @@
+window.onload = () => {
+  loadMovies(endpoint)
+  createCategories()
+  createMovieDiv()
+}
 //show search bar---------------------
 let searchBar = document.querySelector("#searchBar")
 function showSearch() {
@@ -19,104 +24,10 @@ function scrollNavbar() {
     // Change the color of navLinks back to default
   }
 }
-//------------------------------------------------------------
-const slider = document.querySelector(".slider")
-const btnLeft = document.getElementById("moveLeft")
-const btnRight = document.getElementById("moveRight")
-const indicators = document.querySelectorAll(".indicator")
-
-let baseSliderWidth = slider.offsetWidth
-let activeIndex = 0 // the current page on the slider
-
-// Fill the slider with all the movies in the "movies" array
-
-// delete the initial movie in the html
-// const initialMovie = document.getElementById("movie0")
-// initialMovie.remove()
-
-// Update the indicators that show which page we're currently on
-function updateIndicators(index) {
-  indicators.forEach((indicator) => {
-    indicator.classList.remove("current")
-  })
-  let newActiveIndicator = indicators[index]
-  newActiveIndicator.classList.add("current")
-}
-
-// Scroll Left button
-btnLeft.addEventListener("click", (e) => {
-  let movieWidth = document
-    .querySelector(".movie")
-    .getBoundingClientRect().width
-  let scrollDistance = movieWidth * 6 // Scroll the length of 6 movies. TODO: make work for mobile because (4 movies/page instead of 6)
-
-  slider.scrollBy({
-    top: 0,
-    left: -scrollDistance,
-    behavior: "smooth",
-  })
-  activeIndex = (activeIndex - 1) % 3
-  console.log(activeIndex)
-  updateIndicators(activeIndex)
-})
-
-// Scroll Right button
-btnRight.addEventListener("click", (e) => {
-  let movieWidth = document
-    .querySelector(".movie")
-    .getBoundingClientRect().width
-  let scrollDistance = movieWidth * 6 // Scroll the length of 6 movies. TODO: make work for mobile because (4 movies/page instead of 6)
-
-  console.log(`movieWidth = ${movieWidth}`)
-  console.log(`scrolling right ${scrollDistance}`)
-
-  //   // if we're on the last page
-  if (activeIndex == 2) {
-    // duplicate all the items in the slider (this is how we make 'looping' slider)
-    populateSlider()
-    slider.scrollBy({
-      top: 0,
-      left: +scrollDistance,
-      behavior: "smooth",
-    })
-    activeIndex = 0
-    updateIndicators(activeIndex)
-  } else {
-    slider.scrollBy({
-      top: 0,
-      left: +scrollDistance,
-      behavior: "smooth",
-    })
-    activeIndex = (activeIndex + 1) % 3
-    console.log(activeIndex)
-    updateIndicators(activeIndex)
-  }
-})
-
-// slider.addEventListener("scroll", (e) => {
-//   console.log(slider.scrollLeft)
-//   console.log(slider.offsetWidth)
-// })
-
-//play video on hover---------------------
-const VideoController = function (isHovering, videoElement) {
-  if (isHovering == true) {
-    videoElement.play()
-  } else if (isHovering == false) {
-    videoElement.pause()
-  }
-}
-
-//------------------------------------------------------------------------------------------------------
-
-const category = "action".toLowerCase()
-console.log(category)
-window.onload = () => {
-  loadProducts()
-}
-const endpoint = `https://striveschool-api.herokuapp.com/api/movies/${category}`
-
-const loadProducts = async () => {
+// Connect to Api-----------
+const endpoint = `https://striveschool-api.herokuapp.com/api/movies/`
+// Get API Response-----------
+const loadMovies = async (endpoint) => {
   try {
     const response = await fetch(endpoint, {
       method: "GET",
@@ -128,48 +39,143 @@ const loadProducts = async () => {
       },
     })
     const movies = await response.json()
-    console.log(movies)
-    populateSlider(movies)
-    //renderProducts(products);
+    //console.log(movies)
+    return movies
   } catch (err) {
     console.log(err)
   }
   console.log("HERE")
 }
 
-function populateSlider(movies) {
-  movies.forEach((movie) => {
-    console.log(movie.name)
-    const newMovie = document.getElementById("movie0")
-    //let newDiv = document.createElement("div");
-    newMovie.innerHTML = `
-         <img id="thumnail-video" src=${movie.imageUrl} alt="" srcset="">      
-        <div class="description">
-          <div class="description__buttons-container">
-            <div class="description__button"><i class="fas fa-play"></i></div>
-            <div class="description__button"><i class="fas fa-plus"></i></div>
-            <div class="description__button"><i class="fas fa-thumbs-up"></i></div>
-             <div class="description__button"><i class="fas fa-thumbs-down"></i></div>
-            <div class="description__button"><i class="fas fa-chevron-down"></i></div>
-          </div>
-          <div class="description__text-container">
-            <span class="description__match font-weight-bold">97% Match</span>
-            <span class="description__rating px-2 py-0">T</span>
-            <span class="description__length">2h 11m</span>
-          <span class="description__rating px-1 py-n1 font-weight-bold rounded">HD</span>
-            <br><br>
-            <a class="btn btn-outline-secondary rounded-0 py-0 m-auto"" href="./pages/backoffice.html?movieId=${movie._id}">ACTION</a>
-  
-          </div>
-          
-        </div>`
-    //newMovie.appendChild(newDiv);
-    // Clone the initial movie thats included in the html, then replace the image with a different one
-    // const newMovie = document.getElementById("movie0");
-    let clone = newMovie.cloneNode(true)
-    // let img = clone.querySelector("video");
-    // img.src = image.src;
-    slider.insertBefore(clone, slider.childNodes[slider.childNodes.length - 1])
+let categoryArr = []
+console.log(categoryArr)
+//Get each Category Array--------------
+const createCategories = async () => {
+  try {
+    let categories = await loadMovies(endpoint)
+    categories.forEach((category, index) => {
+      categoryArr.push(endpoint + category)
+    })
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const createMovieDiv = async () => {
+  try {
+    let categoriesRow = document.getElementById("categories")
+    let movieArr = await loadMovies(endpoint)
+    categoryArr.forEach(async (category, i) => {
+      let movies = await loadMovies(category)
+      //console.log(category)
+      let categoryDiv = document.createElement("div")
+      let titleDiv = document.createElement("div")
+      categoryDiv.classList.add("categoryDiv")
+      categoryDiv.innerHTML = `
+              <button type="button" class="btn btn-outline-danger scrollBtn moveLeft" onclick="btnLeftScroll()"><i class="bi bi-caret-left"></i></button>
+              <button type="button" class="btn btn-outline-danger scrollBtn moveRight" onclick="btnRightScroll()"><i class="bi bi-caret-right"></i></button>`
+      category = categoryDiv
+      categoriesRow.appendChild(titleDiv)
+      categoriesRow.appendChild(categoryDiv)
+      movies.forEach((movie, index) => {
+        titleDiv.innerHTML = `                      
+                        <h3 class="card-title text-light ml-3">${movies[index].category}</h3>`
+        categoryDiv.innerHTML += `
+                      <div class="card border-0 bg-transparent">
+                        <img src=${movies[index].imageUrl} class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">${movies[index].name}</h5>
+                          <p class="card-text">${movies[index].description}</p>
+                          <a class="btn btn-outline-danger rounded-0 py-1 px-3 m-auto" href="./pages/backoffice.html?movieId=${movies[index]._id}">ACTION</a>
+                        </div>
+                      </div>`
+      })
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+//------------------------------------------------------------
+const slider = document.querySelector(".slider")
+const btnLeft = document.querySelectorAll(".moveLeft")
+const btnRight = document.querySelectorAll(".moveRight")
+const indicators = document.querySelectorAll(".indicator")
+
+let baseSliderWidth = slider.offsetWidth
+let activeIndex = 0 // the current page on the slider
+function updateIndicators(index) {
+  indicators.forEach((indicator) => {
+    //indicator.classList.remove("current")
   })
-  return movies
+  let newActiveIndicator = indicators[index]
+  //newActiveIndicator.classList.add("current")
+}
+
+const getWidth = () => {
+  let categoryDiv = document.querySelectorAll(".card")
+  categoryDiv.forEach((element) => {
+    let movieWidth = element.getBoundingClientRect().width
+    console.log(movieWidth)
+    let scrollDistance = movieWidth * 6 // Scroll the length of 6 movies. TODO: make work for mobile because (4 movies/page instead of 6)
+    element.scrollBy({
+      top: 0,
+      left: -scrollDistance,
+      behavior: "smooth",
+    })
+    activeIndex = (activeIndex - 1) % 3
+    console.log(activeIndex)
+    updateIndicators(activeIndex)
+  })
+}
+
+// Scroll Left button
+const btnLeftScroll = () => {
+  getWidth()
+  console.log("left")
+  // let scrollDistance = movieWidth * 6 // Scroll the length of 6 movies. TODO: make work for mobile because (4 movies/page instead of 6)
+  // slider.scrollBy({
+  //   top: 0,
+  //   left: -scrollDistance,
+  //   behavior: "smooth",
+  // })
+  // activeIndex = (activeIndex - 1) % 3
+  // console.log(activeIndex)
+  // updateIndicators(activeIndex)
+}
+
+// Scroll Right button
+const btnRightScroll = () => {
+  console.log("first")
+  btnRight.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      // let movieWidth = document
+      //   .querySelector(".movie")
+      //   .getBoundingClientRect().width
+      // let scrollDistance = movieWidth * 6 // Scroll the length of 6 movies. TODO: make work for mobile because (4 movies/page instead of 6)
+      // console.log(`movieWidth = ${movieWidth}`)
+      // console.log(`scrolling right ${scrollDistance}`)
+      // //   // if we're on the last page
+      // if (activeIndex == 2) {
+      //   // duplicate all the items in the slider (this is how we make 'looping' slider)
+      //   populateSlider()
+      //   slider.scrollBy({
+      //     top: 0,
+      //     left: +scrollDistance,
+      //     behavior: "smooth",
+      //   })
+      //   activeIndex = 0
+      //   updateIndicators(activeIndex)
+      // } else {
+      //   slider.scrollBy({
+      //     top: 0,
+      //     left: +scrollDistance,
+      //     behavior: "smooth",
+      //   })
+      //   activeIndex = (activeIndex + 1) % 3
+      //   console.log(activeIndex)
+      //   updateIndicators(activeIndex)
+      //}
+    })
+  })
 }
