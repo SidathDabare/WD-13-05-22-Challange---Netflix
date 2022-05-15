@@ -3,7 +3,7 @@ body {
 }
 .bg-video-container-overlay {
   position: absolute;
-  height: 100vh;
+  height: 90vh;
   min-width: 100%;
   left: 0;
   top: 0;
@@ -45,7 +45,7 @@ body {
 .navbarBg {
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 9;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.6702031154258579) 9%,
@@ -197,10 +197,14 @@ a.nav-link:hover {
   }
 }
 .container1 {
-  height: 90vh;
+  height: 80vh;
 }
 .container2 {
+  position: relative;
+  z-index: 1;
   width: 100%;
+  height: auto;
+  margin-bottom: 200px;
   padding-top: 30px;
   background: linear-gradient(
     0deg,
@@ -243,10 +247,14 @@ a.nav-link:hover {
 }
 .categoryDiv {
   width: 100%;
-  height: 25vh;
+  height: 30vh;
   display: flex;
   align-items: center;
   margin: 10px 0 10px 0;
+  position: relative;
+}
+.categoryDiv:hover {
+  height: 50vh;
 }
 .card {
   min-width: 17rem;
@@ -267,8 +275,8 @@ a.nav-link:hover {
 
 .card:hover {
   /* top: -100px; */
-  margin-top: 200px;
-  transform: scale(1.5);
+  margin-top: 100px;
+  transform: scale(1.3);
   z-index: 2;
   border-radius: 5px 5px 5px 5px;
   transition: all 0.8s ease-in-out;
@@ -284,7 +292,7 @@ a.nav-link:hover {
 .scrollBtn {
   position: absolute;
   height: 100px;
-  z-index: 2;
+  z-index: 3;
   font-size: 40px;
   font-weight: bolder;
 }
@@ -299,5 +307,7 @@ a.nav-link:hover {
 }
 /* ---------footer ---------*/
 .footer {
+  position: relative;
+  top: 300px;
   background-color: #141414;
 }
